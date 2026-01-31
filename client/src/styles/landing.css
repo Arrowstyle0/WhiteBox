@@ -1,0 +1,171 @@
+
+/* Landing Page Split Layout */
+.landing-page-wrapper {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background: white;
+}
+
+.landing-left {
+  flex: 1;
+  position: relative;
+  background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 80px;
+  box-sizing: border-box;
+}
+
+/* Grid overlay for the left side */
+.landing-left::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+  background-size: 100px 100px;
+  pointer-events: none;
+}
+
+.landing-right {
+  flex: 1; /* Changed from 0.8 to 1 for balance, can adjust */
+  background: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* Centering content */
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+/* Typography Left */
+.landing-welcome-text {
+  font-family: 'Poppins', sans-serif;
+  font-size: 5rem;
+  line-height: 1.1;
+  font-weight: 400;
+  color: #000;
+  z-index: 1; /* Above grid */
+  margin-bottom: 40px;
+}
+
+.landing-brand-highlight {
+  display: inline-block;
+  background-color: #000;
+  color: #fff;
+  padding: 0 16px;
+  font-weight: 500;
+}
+
+/* Right Side Content */
+.landing-auth-container {
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.landing-subheading {
+  font-size: 1.25rem;
+  color: #7ca1b4; /* Light blue/grey from mockup */
+  margin-bottom: 2rem;
+  font-weight: 400;
+}
+
+.btn-landing-black {
+  background-color: #000;
+  color: #fff;
+  font-size: 1.2rem;
+  padding: 1rem 3rem;
+  border-radius: 50px; /* Pill shape */
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
+  width: 100%;
+  font-family: 'Poppins', sans-serif;
+}
+
+.btn-landing-black:hover {
+  transform: translateY(-2px);
+  background-color: #333;
+}
+
+.landing-divider {
+  display: flex;
+  align-items: center;
+  margin: 2rem 0;
+  color: #000;
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.landing-divider::before,
+.landing-divider::after {
+  content: "";
+  flex: 1;
+  border-bottom: 2px solid #000;
+}
+
+.landing-divider span {
+  padding: 0 15px;
+}
+
+/* Input style to match mockup box */
+.input-landing-bordered {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.1rem;
+  border: 2px solid #000;
+  background: white;
+  color: #333;
+  text-align: center;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  border-radius: 4px; /* Slight rounded corners or sharp? Mockup looks sharpish but let's do 4px */
+  transition: border-color 0.2s;
+}
+
+.input-landing-bordered:focus {
+  outline: none;
+  background-color: #fafafa;
+}
+
+/* Animations */
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-left {
+  animation: fadeInLeft 0.8s ease-out forwards;
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+  animation-delay: 0.3s;
+  opacity: 0; /* Star hidden until anim starts */
+}
+
