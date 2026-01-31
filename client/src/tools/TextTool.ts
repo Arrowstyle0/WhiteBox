@@ -31,6 +31,16 @@ export class TextTool implements Tool {
 
     draw(ctx: CanvasRenderingContext2D, element: CanvasElement): void {
         if (!element.text) return;
+
+        // Draw Author Name
+        if (element.author) {
+            ctx.save();
+            ctx.font = '12px sans-serif';
+            ctx.fillStyle = '#666'; // Muted color for name
+            ctx.fillText(element.author, element.x || 0, (element.y || 0) - (element.fontSize || 24));
+            ctx.restore();
+        }
+
         ctx.font = `${element.fontSize || 24}px sans-serif`;
         ctx.fillStyle = element.color; // Text uses fill
         ctx.fillText(element.text, element.x || 0, element.y || 0);

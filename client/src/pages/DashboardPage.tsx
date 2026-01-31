@@ -24,7 +24,7 @@ const DashboardPage: React.FC = () => {
     const fetchBoards = async () => {
         if (!user) return;
         try {
-            const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5001';
+            const apiUrl = import.meta.env.VITE_API_URL || '';
             const res = await fetch(`${apiUrl}/api/boards`, {
                 headers: { 'x-user-id': user.id }
             });
@@ -41,7 +41,7 @@ const DashboardPage: React.FC = () => {
         if (!title) return;
 
         try {
-            const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5001';
+            const apiUrl = import.meta.env.VITE_API_URL || '';
             const res = await fetch(`${apiUrl}/api/boards`, {
                 method: 'POST',
                 headers: {
@@ -65,7 +65,7 @@ const DashboardPage: React.FC = () => {
         if (!confirm("Are you sure you want to delete this board?")) return;
 
         try {
-            const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5001';
+            const apiUrl = import.meta.env.VITE_API_URL || '';
             await fetch(`${apiUrl}/api/boards/${id}`, {
                 method: 'DELETE',
                 headers: { 'x-user-id': user.id }

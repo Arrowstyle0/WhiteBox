@@ -30,7 +30,7 @@ const LandingPage: React.FC = () => {
             // AuthContext 'user' has the ID.
             if (!user) return;
 
-            const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5001';
+            const apiUrl = import.meta.env.VITE_API_URL || '';
             const res = await fetch(`${apiUrl}/api/boards`, {
                 method: 'POST',
                 headers: {

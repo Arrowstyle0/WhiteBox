@@ -11,6 +11,7 @@ export interface CanvasElement {
     color: string;
     fillColor?: string; // Add support for fill
     strokeWidth: number;
+    author?: string; // Username of the creator
 }
 
 export interface Tool {

@@ -1,4 +1,5 @@
 import React, { useEffect, useLayoutEffect, useRef, useState, useMemo } from 'react';
+import { useAuth } from '../context/AuthContext';
 import { socket } from '../socket/socket';
 import { PenTool } from '../tools/PenTool';
 import { ShapeTool } from '../tools/ShapeTool';
@@ -14,6 +15,7 @@ interface WhiteboardProps {
 }
 
 const Whiteboard: React.FC<WhiteboardProps> = ({ roomId, selectedTool, selectedColor, isFillMode }) => {
+    const { user } = useAuth();
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const [elements, setElements] = useState<CanvasElement[]>([]);
     const [currentElement, setCurrentElement] = useState<CanvasElement | null>(null);
@@ -138,6 +140,9 @@ const Whiteboard: React.FC<WhiteboardProps> = ({ roomId, selectedTool, selectedC
 
             if (newEl.type === 'text') {
                 isDrawing.current = false;
+                // Add author to text element
+                newEl.author = user?.username || 'Guest';
+
                 setElements((prev) => [...prev, newEl]);
                 socket.emit('draw', { roomId, element: newEl });
                 socket.emit('save-element', { roomId, element: newEl });
